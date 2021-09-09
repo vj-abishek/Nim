@@ -36,7 +36,6 @@ proc pkg(name: string; cmd = "nimble test"; url = "", useHead = true, allowFailu
 pkg "alea", allowFailure = true
 pkg "argparse"
 pkg "arraymancer", "nim c tests/tests_cpu.nim", allowFailure = true
-pkg "ast_pattern_matching", "nim c -r --oldgensym:on tests/test1.nim", allowFailure = true
 pkg "asyncthreadpool"
 pkg "awk"
 pkg "bigints", url = "https://github.com/Araq/nim-bigints"
@@ -51,12 +50,11 @@ pkg "cascade"
 pkg "cello"
 pkg "chroma"
 pkg "chronicles", "nim c -o:chr -r chronicles.nim"
-pkg "chronos", "nim c -r -d:release tests/testall", allowFailure = true # pending https://github.com/nim-lang/Nim/issues/17130
+pkg "chronos", "nim c -r -d:release tests/testall"
 pkg "cligen", "nim c --path:. -r cligen.nim"
 pkg "combparser", "nimble test --gc:orc"
 pkg "compactdict"
 pkg "comprehension", "nimble test", "https://github.com/alehander42/comprehension"
-pkg "criterion", allowFailure = true # pending https://github.com/disruptek/criterion/issues/3 (wrongly closed)
 pkg "datamancer"
 pkg "dashing", "nim c tests/functional.nim"
 pkg "delaunay"
@@ -69,10 +67,8 @@ pkg "fusion"
 pkg "gara"
 pkg "glob"
 pkg "ggplotnim", "nim c -d:noCairo -r tests/tests.nim"
-pkg "gittyup", "nimble test", "https://github.com/disruptek/gittyup", allowFailure = true
 pkg "gnuplot", "nim c gnuplot.nim"
-# pkg "gram", "nim c -r --gc:arc --define:danger tests/test.nim", "https://github.com/disruptek/gram"
-  # pending https://github.com/nim-lang/Nim/issues/16509
+pkg "gram", "nim c -r --gc:arc --d:danger tests/test.nim", "https://github.com/disruptek/gram"
 pkg "hts", "nim c -o:htss src/hts.nim"
 pkg "httpauth"
 pkg "illwill", "nimble examples"
@@ -93,7 +89,7 @@ pkg "nake", "nim c nakefile.nim"
 pkg "neo", "nim c -d:blas=openblas tests/all.nim"
 pkg "nesm", "nimble tests", allowFailure = true # notice plural 'tests'
 pkg "netty"
-pkg "nico", allowFailure = true
+pkg "nico", allowFailure = true # see bug #16462 ("ambiguous identifier: 'SCANCODE_LEFT'")
 pkg "nicy", "nim c -r src/nicy.nim"
 pkg "nigui", "nim c -o:niguii -r src/nigui.nim"
 pkg "nimcrypto", "nim r --path:. tests/testall.nim" # `--path:.` workaround needed, see D20210308T165435
@@ -101,19 +97,17 @@ pkg "NimData", "nim c -o:nimdataa src/nimdata.nim"
 pkg "nimes", "nim c src/nimes.nim"
 pkg "nimfp", "nim c -o:nfp -r src/fp.nim"
 pkg "nimgame2", "nim c -d:nimLegacyConvEnumEnum nimgame2/nimgame.nim"
-  # XXX Doesn't work with deprecated 'randomize', will create a PR.
 pkg "nimgen", "nim c -o:nimgenn -r src/nimgen/runcfg.nim"
 pkg "nimlsp"
 pkg "nimly", "nim c -r tests/test_readme_example.nim"
-pkg "nimongo", "nimble test_ci", allowFailure = true
-pkg "nimph", "nimble test", "https://github.com/disruptek/nimph", allowFailure = true
+pkg "nimongo", "nimble test_ci"
 pkg "nimpy", "nim c -r tests/nimfrompy.nim"
 pkg "nimquery"
 pkg "nimsl"
 pkg "nimsvg"
 pkg "nimterop", "nimble minitest"
 pkg "nimwc", "nim c nimwc.nim"
-pkg "nimx", "nim c --threads:on test/main.nim", allowFailure = true
+pkg "nimx", "nim c --threads:on test/main.nim"
 pkg "nitter", "nim c src/nitter.nim", "https://github.com/zedeus/nitter"
 pkg "norm", "nim c -r tests/sqlite/trows.nim"
 pkg "npeg", "nimble testarc"
